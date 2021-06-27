@@ -9,8 +9,8 @@ const App = () => {
     <div className="App">
       <Router>
         <div>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <ul className="navbar-nav mr-auto">
+          <nav className="navbar">
+          <ul className="nav">
             <li><Link to={'/'} className="nav-link"> Home </Link></li>
             <li><Link to={'/about'} className="nav-link">About</Link></li>
           </ul>
