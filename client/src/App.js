@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Home from './components/Home';
-import About from './components/About';
+import Home from './views/Home';
+import About from './views/About';
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './index.css';
 
 const App = () => {
@@ -11,7 +13,7 @@ const App = () => {
         <div>
           <nav className="navbar">
           <ul className="nav">
-            <li><Link to={'/'} className="nav-link"> Home </Link></li>
+          <li><Link to={'/'} className="nav-link"> Home </Link></li>
             <li><Link to={'/about'} className="nav-link">About</Link></li>
           </ul>
           </nav>
