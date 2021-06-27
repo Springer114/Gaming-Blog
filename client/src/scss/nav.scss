@@ -1,0 +1,12 @@
+.navbar {
+    padding: .5rem 2rem;
+    background-color: var(--default-theme-gold);
+    .nav {
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
+        .nav-link {
+            padding: 1rem;
+        }
+    }
+}
