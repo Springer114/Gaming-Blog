@@ -29,7 +29,7 @@ const LoginForm = () => {
             <h2>Login</h2>
             <form onSubmit={loginSubmitHandler}>
                 <div>
-                    <input type="email" name="email" placeholder="Email Address*" onChange={e => loginChangeHandler(e)}/>
+                    <input type="email" name="email" placeholder="Email Address" onChange={e => loginChangeHandler(e)}/>
                 </div>
                 <div>
                     <input type="password" name="password" placeholder="Password" onChange={e => loginChangeHandler(e)}/>

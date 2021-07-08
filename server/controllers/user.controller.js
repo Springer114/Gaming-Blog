@@ -49,7 +49,7 @@ module.exports = {
 
         // note that the response object allows chained calls to cookie and json
         res
-            .cookie("usertoken", userToken,  process.env.FIRST_SECRET_KEY, {
+            .cookie("usertoken", userToken, process.env.FIRST_SECRET_KEY, {
                 httpOnly: true
             })
             .json({ msg: "success!" });
