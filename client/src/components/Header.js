@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Home from "../views/Home";
 import About from "../views/About";
 import LoginForm from './LoginForm'
@@ -11,8 +10,10 @@ export default class Header extends Component {
         return (
             <Router>
                 <nav className="navbar">
-                <span className="title">A Gaming Space</span>
-                <FontAwesomeIcon icon="fa-solid fa-tree" />
+                    <div className="site-name">
+                        <i className="fa fa-gamepad" aria-hidden="true"></i>
+                        <span className="title">A Gaming Space</span>
+                    </div>
                     <ul className="nav">
                         <li><Link to={"/"} className="nav-link">Home</Link></li>
                         <li><Link to={"/about"} className="nav-link">About</Link></li>

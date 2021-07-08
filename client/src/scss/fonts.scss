@@ -5,3 +5,12 @@
          url('./fonts/benne-regular-webfont.woff') format('woff'), /* Pretty Modern Browsers */
          url('./fonts/Benne-Regular.ttf')  format('truetype') /* Safari, Android, iOS */
   }
+
+p {
+    font-size: var(--font-size);
+    line-height: 1.4;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 2.2rem;
+}
