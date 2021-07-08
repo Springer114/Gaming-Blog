@@ -1,5 +1,6 @@
 :root {
     --font-size: 1.2rem;
+
     h1 {
         --font-size: 2.2rem;
     }
@@ -15,18 +16,18 @@
     h5 {
         --font-size: 1.4rem;
     }
+
+    .site-name,
+    .fa-gamepad {
+        --font-size: 2rem;
+    }
+
+    @media (max-width: 768px) {
+        .site-name {
+            --font-size: 1rem;
+        }
+        .fa-gamepad {
+            --font-size: 1.5rem;
+        }
+    }
 }
-
-
-// @media (max-width: 768px) {
-//     .navbar {
-//         padding: .5rem 1rem;
-//         .site-name {
-//             font-size: 1rem;
-//             .fa-gamepad {
-//                 font-size: 1.5rem;
-//                 padding-right: .5rem;
-//             }
-//         }
-//     }
-// }
