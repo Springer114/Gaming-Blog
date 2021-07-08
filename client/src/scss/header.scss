@@ -1,6 +1,12 @@
 .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: .5rem 2rem;
     background-color: var(--default-theme-gold);
+    .title {
+        font-size: 2rem;
+    }
     .nav {
         display: flex;
         justify-content: flex-end;
