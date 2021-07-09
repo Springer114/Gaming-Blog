@@ -18,12 +18,7 @@ const RegisterForm = () => {
         password: "",
         confirmPassword: "",
     });
-    const [errors, setErrors] = useState({
-        username: "",
-        email: "",
-        password: "",
-        confirmPassword: ""
-    });
+    const [errors, setErrors] = useState([]);
 
     const changeHandler = e => {
         setRegister({
