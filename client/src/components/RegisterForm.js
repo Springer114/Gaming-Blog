@@ -45,7 +45,7 @@ const RegisterForm = () => {
         .catch((err) => console.log("Errors with post", err));
     };
     return (
-        <div>
+        <div className="page-wrapper register">
             <form onSubmit={submitHandler}>
                 <h2>Register</h2>
                 <div>

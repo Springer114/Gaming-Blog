@@ -25,7 +25,7 @@ const LoginForm = () => {
             .catch(err => console.log("Error with login", err))
     }
     return (
-        <div>
+        <div className="page-wrapper login">
             <h2>Login</h2>
             <form onSubmit={loginSubmitHandler}>
                 <div>
@@ -34,6 +34,7 @@ const LoginForm = () => {
                 <div>
                     <input type="password" name="password" placeholder="Password" onChange={e => loginChangeHandler(e)}/>
                 </div>
+                <div className="castle"></div>
                 <button type="submit">Login</button>
                 {
                     errors ? 

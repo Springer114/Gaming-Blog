@@ -11,8 +11,8 @@ export default class Header extends Component {
             <Router>
                 <nav className="navbar">
                     <div className="site-name">
-                        <i className="fa fa-gamepad" aria-hidden="true"></i>
-                        <span className="title">A Gaming Space</span>
+                    <a href="/"><i className="fa fa-gamepad" aria-hidden="true"></i></a>
+                    <a href="/"><span className="title">A Gaming Space</span></a>
                     </div>
                     <ul className="nav">
                         <li><Link to={"/"} className="nav-link">Home</Link></li>
