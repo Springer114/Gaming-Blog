@@ -61,7 +61,7 @@ const RegisterForm = () => {
     };
 
     return (
-        <div>
+        <div className="page-wrapper register">
             <form onSubmit={submitHandler}>
                 <h2>Register</h2>
                 <div>
