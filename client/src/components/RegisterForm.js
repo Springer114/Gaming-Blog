@@ -3,25 +3,40 @@ import axios from "axios";
 import { navigate } from "@reach/router";
 
 const RegisterForm = () => {
-    const [errors, setErrors] = useState([]);
-    const changeHandler = (e) => {
-        setUser({
-        ...user,
-        [e.target.name]: e.target.value,
-        });
+    const initialRegister = {
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
     };
+
+    const [register, setRegister] = useState(initialRegister)
+
     const [user, setUser] = useState({
         username: "",
         email: "",
         password: "",
         confirmPassword: "",
     });
-    const submitHandler = (e) => {
+    const [errors, setErrors] = useState({
+        username: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+    });
+
+    const changeHandler = e => {
+        setRegister({
+        ...register,
+        [e.target.name]: e.target.value,
+        });
+    };
+
+    const submitHandler = e => {
         e.preventDefault();
         console.log("Form submitted!");
-        axios
-        .post("http://localhost:8000/api/users", user)
-        .then((response) => {
+        axios.post("http://localhost:8000/api/users/register", user)
+        .then(response => {
             console.log(response);
             if (response.data.message === "error") {
             const errorResponse = response.data.errors;
@@ -39,11 +54,12 @@ const RegisterForm = () => {
                 confirmPassword: "",
             });
             setErrors("");
-            navigate("/");
+            navigate("/profile/:id");
             }
         })
         .catch((err) => console.log("Errors with post", err));
     };
+
     return (
         <div>
             <form onSubmit={submitHandler}>
@@ -52,7 +68,7 @@ const RegisterForm = () => {
                     <input
                     type="text"
                     name="username"
-                    placeholder="Enter User Name*"
+                    placeholder="Username"
                     onChange={(e) => changeHandler(e)}
                     />
                 </div>
@@ -60,7 +76,7 @@ const RegisterForm = () => {
                     <input
                     type="email"
                     name="email"
-                    placeholder="Email Address*"
+                    placeholder="Email Address"
                     onChange={(e) => changeHandler(e)}
                     />
                 </div>
@@ -76,7 +92,7 @@ const RegisterForm = () => {
                     <input
                     type="password"
                     name="confirmPassword"
-                    placeholder="Confirm"
+                    placeholder="Confirm Password"
                     onChange={(e) => changeHandler(e)}
                     />
                 </div>

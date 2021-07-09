@@ -3,11 +3,15 @@ import axios from 'axios';
 import {navigate} from '@reach/router';
 
 const LoginForm = () => {
-    const [loginUser, setLoginUser] = useState({
+    const initialLogin = {
         email: "",
         password: ""
-    })
-    const [errors, setErrors] = useState([])
+    };
+
+    const [loginUser, setLoginUser] = useState(initialLogin);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    const [errors] = useState([])
     const loginChangeHandler = (e) => {
         setLoginUser({
             ...loginUser,
@@ -17,10 +21,10 @@ const LoginForm = () => {
     const loginSubmitHandler = (e) => {
         e.preventDefault();
         console.log("login attempt");
-        axios.post("http://localhost:8000/api/users/login", loginUser)
+        axios.post("http://localhost:8000/api/users/login", loginUser, {withCredentials: true})
             .then(response => {
-                console.log(response);
-                navigate("/");
+                setIsAuthenticated(true)
+                navigate("/profile/:id");
             })
             .catch(err => console.log("Error with login", err))
     }
