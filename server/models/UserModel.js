@@ -28,7 +28,7 @@ UserSchema.virtual('confirmPassword')
 
 UserSchema.pre('validate', function(next) {
     if (this.password !== this.confirmPassword) {
-        this.invalidate('confirmPassword', 'Password must match confirm password');
+        this.invalidate('confirmPassword', 'Passwords must match.');
     }
     next();
 });
