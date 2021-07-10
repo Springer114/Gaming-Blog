@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios';
+import Castle from './Castle';
 import {navigate} from '@reach/router';
 
 const LoginForm = () => {
@@ -39,7 +40,6 @@ const LoginForm = () => {
                 <div>
                     <input type="password" name="password" placeholder="Password" onChange={e => loginChangeHandler(e)}/>
                 </div>
-                <div className="castle"></div>
                 <button type="submit">Login</button>
                 {
                     errors ? 
@@ -47,6 +47,7 @@ const LoginForm = () => {
                     : ""
                 }
             </form>
+            <Castle />
         </div>
     )
 }
