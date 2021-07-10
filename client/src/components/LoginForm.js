@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import Castle from './Castle';
 import axios from 'axios';
 import {navigate} from '@reach/router';
 
@@ -47,6 +48,7 @@ const LoginForm = () => {
                     : ""
                 }
             </form>
+            <Castle />
         </div>
     )
 }
