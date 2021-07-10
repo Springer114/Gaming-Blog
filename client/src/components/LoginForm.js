@@ -3,31 +3,32 @@ import axios from 'axios';
 import {navigate} from '@reach/router';
 
 const LoginForm = () => {
-    const initialLogin = {
+
+    const [loginUser, setLoginUser] = useState({
         email: "",
         password: ""
-    };
-
-    const [loginUser, setLoginUser] = useState(initialLogin);
+    });
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const [errors] = useState([])
-    const loginChangeHandler = (e) => {
+    
+    const loginChangeHandler = e => {
         setLoginUser({
             ...loginUser,
             [e.target.name] : e.target.value
         })
     }
-    const loginSubmitHandler = (e) => {
+
+    const loginSubmitHandler = e => {
         e.preventDefault();
-        console.log("login attempt");
         axios.post("http://localhost:8000/api/users/login", loginUser, {withCredentials: true})
             .then(response => {
                 setIsAuthenticated(true)
-                navigate("/profile/:id");
+                navigate("/users/:id");
             })
             .catch(err => console.log("Error with login", err))
     }
+
     return (
         <div className="page-wrapper login">
             <h2>Login</h2>

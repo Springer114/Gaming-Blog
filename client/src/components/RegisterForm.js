@@ -3,15 +3,7 @@ import axios from "axios";
 import { navigate } from "@reach/router";
 
 const RegisterForm = () => {
-    const initialRegister = {
-        username: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-    };
-
-    const [register, setRegister] = useState(initialRegister)
-
+    const [allUsers, setAllUsers] = useState([]);
     const [user, setUser] = useState({
         username: "",
         email: "",
@@ -21,39 +13,39 @@ const RegisterForm = () => {
     const [errors, setErrors] = useState([]);
 
     const changeHandler = e => {
-        setRegister({
-        ...register,
+        setUser({
+        ...user,
         [e.target.name]: e.target.value,
         });
     };
 
     const submitHandler = e => {
         e.preventDefault();
-        console.log("Form submitted!");
         axios.post("http://localhost:8000/api/users/register", user)
-        .then(response => {
-            console.log(response);
-            if (response.data.message === "error") {
-            const errorResponse = response.data.errors;
-            const errorArr = [];
-            console.log(errorResponse);
-            for (const key of Object.keys(errorResponse)) {
-                errorArr.push(errorResponse[key].message);
-            }
-            setErrors(errorArr);
-            } else {
-            setUser({
-                username: "",
-                email: "",
-                password: "",
-                confirmPassword: "",
-            });
-            setErrors("");
-            navigate("/profile/:id");
-            }
-        })
-        .catch((err) => console.log("Errors with post", err));
-    };
+            .then(response => {
+                console.log(response);
+                if (response.data.message === "error") {
+                    const errorResponse = response.data.errors;
+                    const errorArr = [];
+                    for (const key of Object.keys(errorResponse)) {
+                        errorArr.push(errorResponse[key].message);
+                    }
+                    setErrors(errorArr);
+                } else {
+                    let newUser = response.data.results;
+                    setAllUsers([...allUsers, newUser]);
+                    setUser({
+                        username: "",
+                        email: "",
+                        password: "",
+                        confirmPassword: "",
+                    });
+                    setErrors("");
+                    navigate("/users/:id");
+                }
+            })
+            .catch((err) => console.log("Errors with post", err));
+        };
 
     return (
         <div className="page-wrapper register">
