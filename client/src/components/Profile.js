@@ -2,35 +2,29 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
 const Profile = props => {
+    const [allUsers, setAllUsers] = useState({});
     const [loading, setLoading] = useState(true);
-    const [users, setUsers] = useState([]);
-    const [user, setUser] = useState({
-        _id: "",
-        username: "",
-        email: "",
-        password: "",
-        createdAt: "",
-        updateAt: ""
-    });
+    const [user, setUser] = useState({});
+    const [loginUser] = useState({});
 
     useEffect(() => {
         getAllUsers();
     }, [])
 
     const getAllUsers = () => {
-        axios.get("http://localhost:8000/api/users", { withCredentials: true })
-            .then(response => setUsers(response.data.results))
-            .catch(err => setUsers([]))
+        axios.get('http://localhost:8000/api/users', { withCredentials: true })
+            .then(response => setAllUsers(response.data.results))
+            .catch(err => setAllUsers([]))
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/users/${props.id}`)
+        axios.get(`http://localhost:8000/api/users/${props._id}`)
             .then(response => {
                 setUser(response.data.results);
                 setLoading(false);
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [props])
 
     if (loading) {
         return (
@@ -40,11 +34,7 @@ const Profile = props => {
 
     return (
         <div>
-            {
-                users.map((user, i) => 
-                <p key={i}>{user.username}</p>
-                )
-            }
+            <h1>this is {props.username}</h1>
         </div>
     )
 }

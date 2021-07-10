@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Router } from "@reach/router";
 import Header from "./components/Header.js";
 import Home from "./views/Home";
@@ -7,7 +7,6 @@ import Login from "./views/Login";
 import Register from "./views/Registration";
 import Profile from "./views/UserProfile";
 import "./index.css";
-import axios from "axios";
 
 const App = () => {
 
@@ -19,7 +18,7 @@ const App = () => {
                 <About path="/about" />
                 <Login path="/login" />
                 <Register path="/register" />
-                <Profile path="/profile/:id" />
+                <Profile path="/users/:id" />
             </Router>
         </div>
     );
