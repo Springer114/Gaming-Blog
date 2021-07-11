@@ -1,10 +1,16 @@
+html,
+body {
+    height: 100%;
+    background-color: var(--default-theme-dark);
+}
+
 body {
     font-family: 'Benne', sans-serif;
-    color: var(--white);
+    color: var(--muted-white);
 }
 
 a {
-    color: var(--white);
+    color: var(--muted-white);
     text-decoration: none;
     &:hover,
     &:visited,
@@ -18,7 +24,7 @@ ul {
 }
 
 .page-wrapper {
-    padding: 1rem 2rem;
+    padding: 65px 2rem 1rem;
 }
 
 button {

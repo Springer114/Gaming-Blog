@@ -1,0 +1,10 @@
+:root {
+    --nav-size: 65px;
+    --border: 1px solid var(--default-theme-dark);
+    --border-radius: 8px;
+    --border-radius-leaf: 10px 100px / 120px;
+    --speed: 500ms;
+    .icon-button {
+        --button-size: calc(var(--nav-size) * .5);
+    }
+}
