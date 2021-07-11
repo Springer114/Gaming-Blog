@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import "./index.css";
 import { Router } from "@reach/router";
 import Header from "./components/Header.js";
 import Home from "./views/Home";
@@ -6,12 +7,12 @@ import About from "./views/About";
 import Login from "./views/Login";
 import Register from "./views/Registration";
 import Profile from "./views/UserProfile";
-import "./index.css";
 
-const App = () => {
 
+
+function App() {
     return (
-        <div className="App">
+        <div>
             <Header />
             <Router>
                 <Home path="/" />
@@ -22,6 +23,6 @@ const App = () => {
             </Router>
         </div>
     );
-};
+}
 
 export default App;
