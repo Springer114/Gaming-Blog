@@ -12,7 +12,7 @@ import Profile from "./views/UserProfile";
 
 function App() {
     return (
-        <div>
+        <div className="App">
             <Header />
             <Router>
                 <Home path="/" />
