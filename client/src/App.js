@@ -10,7 +10,7 @@ import Profile from "./views/UserProfile";
 
 
 
-function App() {
+const App = () => {
     return (
         <div className="App">
             <Header />
