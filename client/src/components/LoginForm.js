@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, { useContext, useState } from 'react'
 import axios from 'axios';
 import Castle from './Castle';
-import {navigate} from '@reach/router';
+import { navigate } from '@reach/router';
+import AuthContext from '../context/AuthContext';
 
 const LoginForm = () => {
 
@@ -9,9 +10,9 @@ const LoginForm = () => {
         email: "",
         password: ""
     });
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+    const [user, setUser] = useState({})
     const [errors] = useState([])
+    const { getLoggedIn } = useContext(AuthContext)
     
     const loginChangeHandler = e => {
         setLoginUser({
@@ -24,8 +25,9 @@ const LoginForm = () => {
         e.preventDefault();
         axios.post("http://localhost:8000/api/users/login", loginUser, {withCredentials: true})
             .then(response => {
-                setIsAuthenticated(true)
-                navigate("/users/:id");
+                getLoggedIn()
+                console.log(response)
+                navigate('/');
             })
             .catch(err => console.log("Error with login", err))
     }
