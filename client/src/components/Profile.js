@@ -1,30 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Profile = props => {
-    const [allUsers, setAllUsers] = useState({});
+const Profile = () => {
     const [loading, setLoading] = useState(true);
-    const [user, setUser] = useState({});
-    const [loginUser] = useState({});
+    const [loginUser, setLoginUser] = useState({});
 
     useEffect(() => {
-        getAllUsers();
-    }, [])
-
-    const getAllUsers = () => {
-        axios.get('http://localhost:8000/api/users', { withCredentials: true })
-            .then(response => setAllUsers(response.data.results))
-            .catch(err => setAllUsers([]))
-    }
-
-    useEffect(() => {
-        axios.get(`http://localhost:8000/api/users/${props._id}`)
+        axios.get(`http://localhost:8000/api/users/${loginUser.id}`)
             .then(response => {
-                setUser(response.data.results);
+                setLoginUser(response.data.results);
+                console.log(response)
+                console.log(response.data.results)
                 setLoading(false);
             })
             .catch(err => console.log(err))
-    }, [props])
+    }, [])
 
     if (loading) {
         return (
@@ -34,7 +24,11 @@ const Profile = props => {
 
     return (
         <div>
-            <h1>this is {props.username}</h1>
+            <br />
+            <br />
+            <br />
+            <br />
+            <h1>this is {loginUser}</h1>
         </div>
     )
 }

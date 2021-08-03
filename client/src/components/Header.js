@@ -10,10 +10,14 @@ import { ReactComponent as ChevronIcon } from "../icons/chevron.svg";
 import { ReactComponent as ArrowIcon } from "../icons/arrow.svg";
 import { ReactComponent as BoltIcon } from "../icons/bolt.svg";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { CSSTransition } from "react-transition-group";
+import AuthContext from "../context/AuthContext";
+import LogoutButton from "./LogoutButton"
 
 const Header = () => {
+    const { loggedIn } = useContext(AuthContext)
+
     return (
         <div>
             <Navbar>
@@ -22,21 +26,28 @@ const Header = () => {
                         About
                     </Link>
                 </li>
-                <li>
-                    <Link to={"/users/:id"} className="nav-link">
-                        Profile
-                    </Link>
-                </li>
-                <li>
-                    <Link to={"/login"} className="nav-link">
-                        Login
-                    </Link>
-                </li>
-                <li>
-                    <Link to={"/register"} className="nav-link">
-                        Register
-                    </Link>
-                </li>
+                {loggedIn === true && (
+                    <li>
+                        <Link to={"/users/:id"} className="nav-link">
+                            Profile
+                        </Link>
+                        <LogoutButton />
+                    </li>
+                )}
+                {loggedIn === false && (
+                    <div>
+                        <li>
+                            <Link to={"/login"} className="nav-link">
+                                Login
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={"/register"} className="nav-link">
+                                Register
+                            </Link>
+                        </li>
+                    </div>
+                )}
                 <NavItem icon={<Hamburger />}>
                     <DropdownMenu />
                 </NavItem>

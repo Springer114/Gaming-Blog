@@ -41,7 +41,7 @@ const RegisterForm = () => {
                         confirmPassword: "",
                     });
                     setErrors("");
-                    navigate("/users/:id");
+                    navigate(`/users/${response.data.results._id}`);
                 }
             })
             .catch((err) => console.log("Errors with post", err));
